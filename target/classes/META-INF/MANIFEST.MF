@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: ragnar
+Build-Jdk: 11.0.2
+Implementation-Title: Expense_Tracker
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.ragnar.expensetracker
+Implementation-URL: https://spring.io/projects/spring-boot/Expense_Track
+ er
+Created-By: Maven Integration for Eclipse
+

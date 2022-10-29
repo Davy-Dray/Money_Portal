@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+
+<body>
+
+	<div layout:fragment="content">
+
+
+
+		<section class="wrapper">
+			<!--overview start-->
+			<div class="row">
+				<div class="col-lg-12">
+					<ol class="breadcrumb"> 
+						<li><i class="fa fa-home"></i><a th:href="@{'/'}">Home</a></li>
+						<li><i class="fa fa-laptop"></i>Dashboard</li>
+					</ol>
+				</div>
+			</div>
+    
+
+			<div class="row"> 
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					<div class="info-box green-bg">
+						<i class="fa fa-minus"></i>
+						<div class="count" th:text="${accountNumber}">0</div>
+						<div class="title">Account Number</div>
+					</div>
+					<!--/.info-box-->
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					<div class="info-box red-bg">
+						<i class="fa fa-money"></i>
+						<div class="count" th:text="${accountBalance}">0</div>
+						<div class="title">Account Balance</div>
+					</div>
+					<!--/.info-box-->
+				</div>
+				<!--/.col-->
+
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					<div class="info-box green-bg">
+						<i class="fa fa-plus"></i>
+						<div class="count" th:text="${expense}">0</div>
+						<div class="title">monthly expense</div>
+					</div>
+
+				</div>
+
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					<div class="info-box yellow-bg">
+						<i class="fa fa-plus"></i>
+						<div class="count" th:text="${income}">0</div>
+						<div class="title">monthly income</div>
+					</div>
+
+				</div>
+
+
+			</div>
+
+		</section>
+
+		<div class="row white-bg">
+			<div class="panel-body">
+				<a th:href="@{'/account/transferForm/'+${accountId}}"
+					class="btn  btn-primary"> Make Transfer </a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<section class="panel">
+					<header class="panel-heading"> Latest Transactions </header>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>TYPE</th>
+									<th>DATE</th>
+									<th>TIME</th>
+									<th>AMOUNT</th>
+									<th>BALANCE</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="transactions:${theTransactions}">
+									<td th:text="${transactions.transactType}">Account Name</td>
+									<td th:text="${transactions.transactionDate}">Bank Name</td>
+									<td th:text="${transactions.transactionTime}">Time</td>
+									
+									
+									<td th:text="${transactions.amount}">Balance</td>
+									<td th:text="${transactions.balance}">Account Email</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+
+				</section>
+			</div>
+		</div>
+
+
+
+
+	</div>
+
+
+</body>
+</html>

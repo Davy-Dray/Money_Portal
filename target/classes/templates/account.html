@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+
+<body>
+
+<div layout:fragment="content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><i class="fa fa-home"></i><a th:href="@{/}">Home</a></li>
+                    <li><i class="fa fa-bars"></i><a th:href="@{'/account/accounts'}">Account Home</a></li>
+                    <li><i class="fa fa-square-o"></i>Add Account</li>
+                </ol>
+            </div>
+        </div>
+    <div class="container" style="width: 70%">
+        <form class="form-horizontal" th:action="@{/account/create-account}" th:object="${myAccount}" method="POST">
+
+            <div class="row justify-content-center white-bg" >
+                <section class="panel">
+                    <header class="panel-heading">
+                        Add Account 
+                    </header>
+                    <br>
+                    <div class="col-lg-6">
+                        <section class="panel">
+                        
+                          <div  class="alert alert-success fade in" role="alert" th:text="${success}" th:if="${success}"></div>
+                         
+                             <div class="form-group row">
+                                <label for="txtFirstnameEdit" class="col-sm-4 col-form-label">Account Name: </label>
+                                <div class="col-sm-6">
+                               <p th:if="${#fields.hasErrors('accountName')}" class="alert alert-block alert-danger fade in">Invalid Account Name</p>
+                                                  
+                                    <input type="text"  th:field="*{accountName}" class="form-control" id="txtFirstnameEdit" name="accountName" placeholder="Account Name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtLastnameEdit" class="col-sm-4 col-form-label">Bank Name: </label>
+                                <div class="col-sm-6">
+                                  <p th:if="${#fields.hasErrors('bankName')}" class="alert alert-block alert-danger fade in">Invalid Bank Name</p>
+                                    <input type="text"    th:field="*{bankName}" class="form-control" id="txtLastnameEdit" name="bankName" placeholder="Bank Name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="txtOthernameEdit" class="col-sm-4 col-form-label">Balance: </label>
+                                <div class="col-sm-6">
+                                    <input type="number"  th:field="*{balance}" class="form-control" id="txtOthernameEdit" name="balance" placeholder="Balance">
+                                </div>
+                            </div>
+                            
+                            
+                             <div class="form-group row">
+                                <label for="txtInitialsEdit" class="col-sm-4 col-form-label">Account Number: </label>
+                                <div class="col-sm-6">
+                                    <p th:if="${#fields.hasErrors('accountNo')}"  class="alert alert-block alert-danger fade in">Invalid Account Number</p>
+                                    <input type="text"  th:field="*{accountNo}" class="form-control" id="txtInitialsEdit" name="accountNo" placeholder="Account Number">
+                                </div>
+                            </div>
+                        
+                            <div class="form-group row">
+                                <label for="ddlGenderEdit" class="col-sm-4 col-form-label">Account Type: </label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" id="ddlGenderEdit" name="accountType" th:field="*{accountType}">
+                                        <option value="Savings Account">Savings Account </option>
+                                        <option value="Current Account ">Current Account </option>
+                                    </select>
+                                </div>
+                            </div>
+                              
+                        </section>
+                    </div>
+                   
+                </section>
+            </div>
+            <br>
+            <div class="row white-bg">
+                <div class="panel-body">
+                    <button type="submit" class="btn btn-primary">
+                        Save
+                    </button>
+                    <a th:href="@{'/account/accounts'}" class="btn  btn-warning">
+                        Back
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+    </section>
+</div>
+
+</body>
+</html>

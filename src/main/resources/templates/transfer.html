@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+
+<body>
+
+	<div layout:fragment="content">
+	
+		<section class="wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<ol class="breadcrumb">
+						<li><i class="fa fa-home"></i><a th:href="@{/}">Home</a></li>
+						<li><i class="fa fa-bars"></i><a
+							th:href="@{'/account/accounts'}">Account Home</a></li>
+						<li><i class="fa fa-square-o"></i>Transfer</li>
+					</ol>
+				</div>
+			</div>
+			<div class="container" style="width: 70%">
+				<form class="form-horizontal" th:action="@{/account/transferFund}"
+					th:object="${transfer}" method="POST">
+
+					<div class="row justify-content-center white-bg">
+						<section class="panel">
+							<header class="panel-heading"> Transfer fund </header>
+							<br>
+							<div class="col-lg-6">
+								<section class="panel">
+
+									<div class="alert alert-success fade in" role="alert"
+										th:text="${error}" th:if="${error}"></div>
+									<div class="alert alert-success fade in" role="alert"
+										th:text="${success}" th:if="${success}"></div>
+
+									<div class="form-group row">
+										<label for="txtLastnameEdit" class="col-sm-4 col-form-label">Beneficiary
+											Account Number: </label>
+										<div class="col-sm-6">
+
+											<input type="text" th:field="*{reciverId}"
+												class="form-control" id="txtLastnameEdit" name="receiver">
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label for="txtOthernameEdit" class="col-sm-4 col-form-label">Amount:
+										</label>
+										<div class="col-sm-6">
+											<input type="number" th:field="*{amount}"
+												class="form-control" id="txtOthernameEdit" name="amount">
+										</div>
+									</div>
+									<input type="hidden" name="sender" th:value="${accountNumber}">
+
+								</section>
+							</div>
+
+						</section>
+					</div>
+					<br>
+					<div class="row white-bg">
+						<div class="panel-body">
+							<button type="submit" class="btn btn-primary">Transfer</button>
+							<a href="/hr/employees" class="btn  btn-warning"> Exit </a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+
+</body>
+</html>
